@@ -1,3 +1,3 @@
-Data: [`jccpprtTR.csv`](data/jccpprtTR.csv)
-([source](https://page.mi.fu-berlin.de/prechelt/packages/jccpprtTR.csv),
-see also: [technical report](https://page.mi.fu-berlin.de/prechelt/Biblio/jccpprtTR.pdf))
+## Example Data and Data Analysis for PA1478/PA1457
+
+Based on [real-world data](data/).

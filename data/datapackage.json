@@ -1,0 +1,93 @@
+{
+    "name": "jccpprtTR",
+    "contributors": [
+        {
+            "title": "Lutz Prechelt",
+            "email": "prechelt@inf.fu-berlin.de",
+            "roles": [
+                "creator"
+            ]
+        }
+    ],
+    "sources": [
+        {
+            "path": "https://page.mi.fu-berlin.de/prechelt/packages/jccpprtTR.csv"
+        }
+    ],
+    "resources": [
+        {
+            "name": "jccpprtTR",
+            "path": "jccpprtTR.csv",
+            "hash": "cc00dab432a38daa4d760bf4e6e61106",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "person",
+                        "description": "subject ID",
+                        "type": "string",
+                        "constraints": {
+                            "unique": true
+                        }
+                    },
+                    {
+                        "name": "lang",
+                        "description": "programming language",
+                        "type": "string"
+                    },
+                    {
+                        "name": "z1000t",
+                        "description": "run time for z1000 input file in minutes",
+                        "type": "number"
+                    },
+                    {
+                        "name": "z0t",
+                        "description": "run time for z0 input file in minutes",
+                        "type": "number"
+                    },
+                    {
+                        "name": "z1000m",
+                        "description": "memory consumption at end of run for z1000 input file in kilobytes",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "stmtL",
+                        "description": "program length in statement lines of code",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "z1000rel",
+                        "description": "output reliability for z1000 input file in percent",
+                        "type": "number",
+                        "constraints": {
+                            "maximum": 100
+                        }
+                    },
+                    {
+                        "name": "m1000rel",
+                        "description": "output reliability for m1000 input file in percent",
+                        "type": "number",
+                        "constraints": {
+                            "maximum": 100
+                        }
+                    },
+                    {
+                        "name": "whours",
+                        "description": "total subject work time in hours",
+                        "type": "number"
+                    },
+                    {
+                        "name": "caps",
+                        "description": "subject's answer to the capability question 'I consider myself to be among the top X percent of all programmers'",
+                        "type": "string",
+                        "missingValues": [
+                            "??",
+                            "NA"
+                        ]
+                    }
+                ]
+            },
+            "format": "csv",
+            "encoding": "utf-8"
+        }
+    ]
+}
