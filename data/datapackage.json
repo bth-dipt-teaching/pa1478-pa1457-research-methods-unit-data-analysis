@@ -45,7 +45,7 @@
                         "type": "number"
                     },
                     {
-                        "name": "z1000m",
+                        "name": "z1000mem",
                         "description": "memory consumption at end of run for z1000 input file in kilobytes",
                         "type": "integer"
                     },
