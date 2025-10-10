@@ -89,7 +89,13 @@ df |>
     )
 ```
 
-![](quantitative-analysis-examples.markdown_github_files/figure-markdown_github/fig-java-whours-1.png)
+<div id="fig-java-whours">
+
+![](quantitative-analysis-examples_files/figure-commonmark/fig-java-whours-1.png)
+
+Figure 1: Work time spent on Java programs
+
+</div>
 
 ### Visualizing One Variable (Nominal or Ordinal)
 
@@ -105,7 +111,14 @@ df |>
     theme_minimal()
 ```
 
-![](quantitative-analysis-examples.markdown_github_files/figure-markdown_github/fig-nominal-bar-chart-1.png)
+<div id="fig-nominal-bar-chart">
+
+![](quantitative-analysis-examples_files/figure-commonmark/fig-nominal-bar-chart-1.png)
+
+Figure 2: Bar charts work even for nominal variables, because we only
+need to count.
+
+</div>
 
 ``` r
 df |>
@@ -130,7 +143,14 @@ df |>
     )
 ```
 
-![](quantitative-analysis-examples.markdown_github_files/figure-markdown_github/fig-ordinal-stacked-bar-chart-1.png)
+<div id="fig-ordinal-stacked-bar-chart">
+
+![](quantitative-analysis-examples_files/figure-commonmark/fig-ordinal-stacked-bar-chart-1.png)
+
+Figure 3: Ordinal variables should be shown in order, possibly even
+stacked.
+
+</div>
 
 ### Visualizing One Variable (Interval or Ratio) with Histograms
 
@@ -150,9 +170,21 @@ df |> histogram(50)
 df |> histogram(20)
 ```
 
-![](quantitative-analysis-examples.markdown_github_files/figure-markdown_github/fig-histograms-1.png)
+<div id="fig-histograms-1">
 
-![](quantitative-analysis-examples.markdown_github_files/figure-markdown_github/fig-histograms-2.png)
+![](quantitative-analysis-examples_files/figure-commonmark/fig-histograms-1.png)
+
+Figure 4: Wide bins (here: 50) lead to smoother shapes
+
+</div>
+
+<div id="fig-histograms-2">
+
+![](quantitative-analysis-examples_files/figure-commonmark/fig-histograms-2.png)
+
+Figure 5: Narrow bins (here: 20) lead to jagged shapes
+
+</div>
 
 ### Visualizing One Variable (Interval or Ratio) with Boxplots
 
@@ -176,7 +208,14 @@ df |>
     )
 ```
 
-![](quantitative-analysis-examples.markdown_github_files/figure-markdown_github/fig-boxplot-1.png)
+<div id="fig-boxplot">
+
+![](quantitative-analysis-examples_files/figure-commonmark/fig-boxplot-1.png)
+
+Figure 6: A box plot showing the middle 50% (box), median (thick line),
+min and max without outliers (whiskers), and outliers (separate dots).
+
+</div>
 
 ### Visualizing Differences in Data with Boxplots
 
@@ -195,7 +234,13 @@ df |>
     )
 ```
 
-![](quantitative-analysis-examples.markdown_github_files/figure-markdown_github/fig-boxplot-compare-1.png)
+<div id="fig-boxplot-compare">
+
+![](quantitative-analysis-examples_files/figure-commonmark/fig-boxplot-compare-1.png)
+
+Figure 7: Box plots allow to quickly compare distributions.
+
+</div>
 
 The two languages appear to have the same median, but different
 dispersion measures.
@@ -229,7 +274,14 @@ df |>
     theme_minimal()
 ```
 
-![](quantitative-analysis-examples.markdown_github_files/figure-markdown_github/fig-scatterplot-1.png)
+<div id="fig-scatterplot">
+
+![](quantitative-analysis-examples_files/figure-commonmark/fig-scatterplot-1.png)
+
+Figure 8: Scatterplots show the relation of two ratio variables (and
+allow for more variables as well, dot size, shape, color, …)
+
+</div>
 
 ## Infer from Data
 
@@ -254,7 +306,14 @@ df |>
     )
 ```
 
-![](quantitative-analysis-examples.markdown_github_files/figure-markdown_github/fig-boxplot-script-1.png)
+<div id="fig-boxplot-script">
+
+![](quantitative-analysis-examples_files/figure-commonmark/fig-boxplot-script-1.png)
+
+Figure 9: Visually, there is a large difference between the size of
+script and non-script programs.
+
+</div>
 
 Testing whether the difference shown in
 <a href="#fig-boxplot-script" class="quarto-xref">Figure 9</a> could be
@@ -316,4 +375,11 @@ subset(df, script) |>
     theme_minimal()
 ```
 
-![](quantitative-analysis-examples.markdown_github_files/figure-markdown_github/fig-regression-analysis-1.png)
+<div id="fig-regression-analysis">
+
+![](quantitative-analysis-examples_files/figure-commonmark/fig-regression-analysis-1.png)
+
+Figure 10: There is a moderately strong correlation between the work
+time and the size of script programs.
+
+</div>

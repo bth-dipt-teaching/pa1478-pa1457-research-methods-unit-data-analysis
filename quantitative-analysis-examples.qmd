@@ -9,7 +9,7 @@ date: 2025-10-10
 license: "CC BY"
 number-sections: true
 
-format: markdown_github
+format: gfm
 ---
 
 This overview is created with [Quarto](https://quarto.org) and uses the [R](https://www.r-project.org/) programming language for statistics and plotting
