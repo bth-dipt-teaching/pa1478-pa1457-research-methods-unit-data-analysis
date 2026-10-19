@@ -99,16 +99,29 @@ Figure 1: Work time spent on Java programs
 
 ### Visualizing One Variable (Nominal or Ordinal)
 
+Nominal and ordinal variable are best displayed as bar charts.
+
+Avoid pie charts, because two segments of similar size cannot be
+distinguished as easily as two bars of similar size.
+
+Use qualitative color scales for nominal scales and sequential or
+diverging for ordinal variables.
+
 ``` r
 df |>
     count(lang) |>
 
     # Bar chart
-    ggplot(aes(x = lang, y = n)) +
-    geom_bar(stat = "identity", fill = "blue") +
+    ggplot(aes(x = lang, y = n, fill = lang)) +
+    geom_bar(stat = "identity") +
 
     # Optics
-    theme_minimal()
+    ylab("count") +
+    scale_fill_brewer(type = "qual", palette = "Dark2") +
+    theme_minimal() +
+    theme(
+        legend.position = "none",
+    )
 ```
 
 <div id="fig-nominal-bar-chart">
@@ -133,7 +146,8 @@ df |>
     coord_flip(xlim = c(0, 2)) +
     ylab("Proportion") +
     scale_y_continuous(labels = scales::label_percent()) +
-    scale_fill_brewer(name = "Self-Assessment", palette = "RdYlGn", direction = -1) +
+    scale_fill_brewer(name = "Self-Assessment", type = "div", palette = "RdYlGn", direction = -1) +
+    #scale_fill_brewer(name = "Self-Assessment", palette = "RdYlGn", direction = -1) +
     guides(fill = guide_legend(reverse=T)) +
     theme_minimal() +
     theme(
@@ -285,7 +299,10 @@ allow for more variables as well, dot size, shape, color, …)
 
 ## Infer from Data
 
-### Hypothesis Testing
+First, you need to decide what you want to test. Typically, you would
+test for differences between groups or for correlations between groups.
+
+### Difference Testing
 
 There appears to be a difference in program size between script and
 non-script languages (seen in
@@ -315,26 +332,31 @@ script and non-script programs.
 
 </div>
 
-Testing whether the difference shown in
+We are testing whether the difference shown in
 <a href="#fig-boxplot-script" class="quarto-xref">Figure 9</a> could be
-by chance (i.e., how likely is it to see such a difference when there is
-actually none in the population that we sampled from).
+by chance (i.e., how likely is it to see a at least as big difference in
+samples of our size assuming there is no difference in the underlying
+population). Since the distributions are skewed (non-symmetric) and have
+a long tail (outliers beyond the boxplot whiskers), we use a
+non-parametric test (one that does not expect normally-distributed
+data).
 
 ``` r
 wilcox.test(whours ~ script, data = df)
 ```
 
 
-        Wilcoxon rank sum test with continuity correction
+        Wilcoxon rank sum exact test
 
     data:  whours by script
-    W = 1440, p-value = 7.54e-10
+    W = 1440, p-value = 1.587e-11
     alternative hypothesis: true location shift is not equal to 0
 
 The probability (“p-value”) is *way* smaller than 5% – we accept this as
-a “statistically significant difference”.
+a “statistically significant difference”. But we don’t know yet, whether
+that difference is practically meaningful.
 
-### Effect Size
+#### Effect Size
 
 ``` r
 library(effectsize)
@@ -353,10 +375,10 @@ The effect size 1.16 indicates a large effect (\> 0.8). It means that
 the two means of the script and non-script languages are 1.16 standard
 deviations apart.
 
-### Correlation Analysis
+### Correlation Testing
 
 ``` r
-r <- with(subset(df, script), cor(whours, stmtL, method = "pearson"))
+r <- with(subset(df, script), cor.test(whours, stmtL, method = "pearson"))
 
 # Scatter plot (of script languages)
 subset(df, script) |>
@@ -367,7 +389,7 @@ subset(df, script) |>
     geom_smooth(method = "lm", formula = y ~ x, se = FALSE) +
     # Add r-value
     annotate("text", x = 10, y = 150, 
-           label = paste("r =", round(r, 2)), 
+           label = paste("r =", round(r$estimate, 2), "\np =", format.pval(r$p.value, 2, 0.001, 3)), 
            size = 5, color = "blue") +
 
     # Optics
@@ -379,7 +401,7 @@ subset(df, script) |>
 
 ![](quantitative-analysis-examples_files/figure-commonmark/fig-regression-analysis-1.png)
 
-Figure 10: There is a moderately strong correlation between the work
-time and the size of script programs.
+Figure 10: For script languages, there is a moderately strong
+correlation between the work time and the size of programs.
 
 </div>
